@@ -1,0 +1,32 @@
+{
+    "name": "ksp-syntax-highlighter",
+    "displayName": "KSP Syntax Highlighter",
+    "publisher": "chmn-oh",
+    "repository": "https://github.com/chmnoh/ksp-syntax-highlighter",
+    "description": "HTML with embedded K",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ksp-syntax-highlighter",
+            "aliases": [
+                "KSP (K Server Page)",
+                "HTML with embedded K"
+            ],
+            "extensions": [
+                ".ksp"
+            ],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ksp-syntax-highlighter",
+            "scopeName": "text.html.k",
+            "path": "./syntaxes/ksp.tmLanguage.json"
+        }]
+    }
+}

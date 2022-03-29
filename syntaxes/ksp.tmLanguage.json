@@ -1,0 +1,63 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "KSP Syntx Highlighter",
+    "scopeName": "text.html.k",
+    "patterns": [
+        { "include": "#block-k" },
+        { "include": "#block-js" },
+        { "include": "text.html.basic" }
+    ],
+    "injections": {
+        "text.html.k - (meta.embedded | meta.tag | comment.block.ksp)": {
+            "patterns": [
+                { "include": "#block-k" }
+            ]
+        },
+        "L:text.html.k meta.tag, L:text.html.k source.k, L:text.html.k source.js - (comment.block.ksp),  L:text.html.k source.css - (comment.block.ksp)": {
+            "comment": "The L: means 'injected to the left,' that is, before other possible matches",
+            "patterns": [
+                { "include": "#block-k" }
+            ]
+        }
+    },
+    "repository": {
+        "block-k": {
+            "patterns": [
+                {
+                    "begin": "<\\?ksp",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.section.embedded.begin.ksp" }
+                    },
+                    "end": "\\?>",
+                    "endCaptures": {
+                        "0": { "name": "punctuation.section.embedded.end.ksp" }
+                    },
+                    "name": "meta.embedded.block.k",
+                    "contentName": "source.k",
+                    "patterns": [
+                        { "include": "source.k" }
+                    ]
+                }
+            ]
+        },
+        "block-js": {
+            "patterns": [
+                {
+                    "begin": "<script",
+                    "beginCaptures": {
+                        "0": { "name": "punctuation.section.embedded.begin.js" }
+                    },
+                    "end": "/script>",
+                    "endCaptures": {
+                        "0": { "name": "punctuation.section.embedded.end.js" }
+                    },
+                    "name": "meta.embedded.block.js",
+                    "contentName": "source.js",
+                    "patterns": [
+                        { "include": "source.js" }
+                    ]
+                }
+            ]
+        }
+    }
+}
